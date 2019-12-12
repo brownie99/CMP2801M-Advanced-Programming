@@ -1,0 +1,6 @@
+﻿  Circle.cpp
+c:\users\scurr\documents\github\cmp2801m-advanced-programming\scott brown - cmp2801m advanced programming\scott brown - cmp2801m advanced programming\circle.cpp(13): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\scurr\documents\github\cmp2801m-advanced-programming\scott brown - cmp2801m advanced programming\scott brown - cmp2801m advanced programming\circle.cpp(21): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\scurr\documents\github\cmp2801m-advanced-programming\scott brown - cmp2801m advanced programming\scott brown - cmp2801m advanced programming\circle.cpp(26): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\scurr\documents\github\cmp2801m-advanced-programming\scott brown - cmp2801m advanced programming\scott brown - cmp2801m advanced programming\circle.cpp(59): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  Scott Brown - CMP2801M Advanced Programming.vcxproj -> C:\Users\scurr\Documents\GitHub\CMP2801M-Advanced-Programming\Scott Brown - CMP2801M Advanced Programming\Debug\Scott Brown - CMP2801M Advanced Programming.exe

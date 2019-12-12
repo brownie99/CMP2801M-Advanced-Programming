@@ -11,8 +11,10 @@ private:
 	void calculatePoints();
 public:
 	Square (int topLeftX, int topLeftY, int edgeLength);
-	void toString();
+	std::string getPoints();
+	std::string toString();
 	void move(int newX, int newY);
 	void scale(float scaleX, float scaleY);
-	
+	friend std::ostream& operator<<(std::ostream& os, Square* c);
+
 };

@@ -1,11 +1,16 @@
 #include "Square.h"
+#include "Error.h"
+#include <iterator>
+#include <string>
+#include <sstream>
+
 
 Square::Square(int topLeftX, int topLeftY, int edgeLength)
 {
 	leftTop = Point(topLeftX, topLeftY);
 	edge = edgeLength;
 	calculatePoints();
-	calculateArea;
+	calculateArea();
 	calculatePerimeter();
 }
 
@@ -29,15 +34,53 @@ void Square::move(int newX, int newY)
 void Square::calculatePoints()
 {
 	points.clear();
-	points.push_back(leftTop);
-	points.push_back(Point(leftTop.getX()+edge, leftTop.getY()));
-	points.push_back(Point(leftTop.getX(), leftTop.getY()+edge));
-	points.push_back(Point(leftTop.getX()+edge, leftTop.getY()+edge));
+	points.push_back(&leftTop);
+	points.push_back(new Point(leftTop.getX()+edge, leftTop.getY()));
+	points.push_back(new Point(leftTop.getX(), leftTop.getY()+edge));
+	points.push_back(new Point(leftTop.getX()+edge, leftTop.getY()+edge));
 }
 
-void Square::toString()
+void Square::scale(float scaleX, float scaleY)
 {
-	std::cout << "Square[e=" << edge << "]" << std::endl;
-	std::cout << "Points[(" << points[0].getX() << "," << points[0].getY() << ")(" << points[1].getX() << "," << points[1].getY() << ")(" << points[2].getX() << "," << points[2].getY() << ")(" << points[3].getX() << "," << points[3].getY() << ")]" << std::endl;
-	std::cout << "Area=" << area << " Perimeter" << perimeter << std::endl;
+	try
+	{
+		if (scaleX != scaleY)
+		{
+			throw errorClass("X and Y scale and not the same");
+		}
+		edge = edge * scaleX;
+	}
+	catch (errorClass e)
+	{
+		std::cout << e.getErrMsg().c_str();
+	}
+}
+
+std::string Square::getPoints()
+{
+	std::string tmp = "Points[";
+
+	std::vector<Point*>::iterator ptr;
+	for (ptr = points.begin(); ptr < points.end(); ptr++)
+	{
+		tmp += "(" + std::to_string((*ptr)->getX()) + "," + std::to_string((*ptr)->getY()) + ")";
+	}
+	tmp += "]";
+	return tmp;
+}
+
+std::string Square::toString()
+{
+	std::stringstream tmp;
+	tmp << "Circle[e=" + std::to_string(edge) + "]\n";
+	tmp << getPoints().c_str();
+	tmp << "\nArea=" + std::to_string(area) + " Perimeter=" + std::to_string(perimeter) + "\n";
+	return tmp.str();
+}
+
+std::ostream& operator<<(std::ostream& os, Square* c)
+{
+	std::string tmp = c->toString();
+	os << tmp.c_str();
+	return os;
 }

@@ -1,6 +1,7 @@
 #pragma once
 #include "Shape.h"
 #include "Movable.h"
+#include "Error.h"
 
 class Rectangle : public Shape, public Movable
 {
@@ -11,7 +12,10 @@ class Rectangle : public Shape, public Movable
 	void calculatePoints();
 public:
 	Rectangle(int topLeftX, int topLeftY, int rHeight, int rWidth);
-	void toString();
+	std::string getPoints();
+	std::string toString();
 	void move (int newX, int newY);
 	void scale(float scaleX, float scaleY);
+	friend std::ostream& operator<<(std::ostream& os, Rectangle* c);
+
 };

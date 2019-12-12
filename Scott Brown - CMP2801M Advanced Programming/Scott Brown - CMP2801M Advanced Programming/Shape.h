@@ -2,19 +2,22 @@
 #include "Point.h"
 #include <vector>
 #include <iostream>
+#include <string>
+#include <strstream>
 
 class Shape
 {
 protected:
-	int area;
+	float area;
 	bool isCircular;
 	Point leftTop;
 	float perimeter;
-	std::vector<Point> points;
+	std::vector<Point*> points;
 	virtual void calculateArea() = 0;
 	virtual void calculatePerimeter() = 0;
 	virtual void calculatePoints() = 0;
+	virtual std::string getPoints() = 0;
 public:
-	virtual void toString() = 0;
+	virtual std::string toString() = 0;
 	
 };
